@@ -1,0 +1,7 @@
+{
+  "name": "charge-battery-reminder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
