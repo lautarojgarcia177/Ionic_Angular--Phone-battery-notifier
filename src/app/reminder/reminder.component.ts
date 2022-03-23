@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-reminder',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReminderComponent implements OnInit {
 
-  constructor() { }
+  value = 100;
 
-  ngOnInit() {}
+  options: Options = {
+    floor: 0,
+    ceil: 200
+  };
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 
 }
