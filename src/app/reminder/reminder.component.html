@@ -2,11 +2,32 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-title>
+        <span *ngIf="!isCreating">
         Edit this reminder
+        </span>
+        <span *ngIf="isCreating">
+          Create reminder
+        </span>
       </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+  <ion-item>
+    <ion-label position="floating">
+      Remind me to charge my phone when batttery is..
+    </ion-label>
+    <ion-range [pin]="true" [value]="value" min="0" max="100" (ionChange)="onIonChange($event)"
+               [pinFormatter]="customFormatter"></ion-range>
+  </ion-item>
+
+
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="saveReminder()" fill="solid" [disabled]="!isValid">
+        <span style="margin-right: 6px; margin-top: 4px;">Save</span>
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
 </ion-content>

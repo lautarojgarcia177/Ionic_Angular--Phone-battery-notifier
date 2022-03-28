@@ -6,22 +6,22 @@ import {RemindersService} from '../reminders.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  reminders: number[];
+  reminders$ = this.remindersService.reminders$;
 
-  constructor(private remindersService: RemindersService) {}
-
-  ngOnInit() {
-    this.reminders = this.remindersService.reminders;
+  constructor(private remindersService: RemindersService) {
   }
 
   editReminder(reminder: number) {
     console.log('edit reminder');
+    // this.remindersService.
   }
 
   deleteReminder(reminder: number) {
-    console.log('delete reminder');
-    this.remindersService.deleteReminder(reminder);
+    this.remindersService.removeReminder(reminder).then(() => {
+    }).catch(() => {
+      alert('There was an error');
+    });
   };
 }

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {ReminderComponent} from "./reminder/reminder.component";
 import {HomePage} from "./home/home.page";
 
@@ -9,15 +9,20 @@ const routes: Routes = [
     component: HomePage
   },
   {
-    path: ':id',
+    path: ':range',
+    component: ReminderComponent
+  },
+  {
+    path: 'create',
     component: ReminderComponent
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

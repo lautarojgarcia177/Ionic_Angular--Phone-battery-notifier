@@ -10,13 +10,14 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {HomePage} from './home/home.page';
 
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import {ReminderComponent} from './reminder/reminder.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePage],
+  declarations: [AppComponent, HomePage, ReminderComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule,
-    FormsModule, NgxSliderModule
+    FormsModule, IonicStorageModule.forRoot()
   ],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],
