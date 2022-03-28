@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "charge-battery-reminder",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

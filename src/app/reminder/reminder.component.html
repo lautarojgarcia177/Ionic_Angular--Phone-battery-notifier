@@ -1,6 +1,11 @@
 <ion-content [fullscreen]="true">
   <ion-header [translucent]="true">
     <ion-toolbar>
+      <ion-buttons slot="start">
+        <a routerLink="/">
+          <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </a>
+      </ion-buttons>
       <ion-title>
         <span *ngIf="!isCreating">
         Edit this reminder
@@ -13,17 +18,18 @@
   </ion-header>
 
   <ion-item>
-    <ion-label position="floating">
+    <ion-label position="floating" style="padding-bottom: 5px; padding-left: 1rem;">
       Remind me to charge my phone when batttery is..
     </ion-label>
-    <ion-range [pin]="true" [value]="value" min="0" max="100" (ionChange)="onIonChange($event)"
+    <ion-range class="ion-float-left" [pin]="true" [value]="value" min="0" max="100" (ionChange)="onIonChange($event)"
                [pinFormatter]="customFormatter"></ion-range>
+    <span>{{value}}%</span>
   </ion-item>
 
 
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button color="success" (click)="saveReminder()" fill="solid" [disabled]="!isValid">
+      <ion-button color="primary" (click)="saveReminder()" fill="solid" [disabled]="!isValid">
         <span style="margin-right: 6px; margin-top: 4px;">Save</span>
         <ion-icon name="save-outline"></ion-icon>
       </ion-button>

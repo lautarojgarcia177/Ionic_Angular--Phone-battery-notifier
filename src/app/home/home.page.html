@@ -7,19 +7,20 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- List of Sliding Items -->
-  <ion-list>
-    <ion-item-sliding *ngFor="let reminder of reminders$ | async">
-      <ion-item [href]="reminder">
-        <ion-label>{{reminder}}%</ion-label>
-      </ion-item>
-      <ion-item-options side="end" (ionSwipe)="deleteReminder(reminder)">
-        <ion-item-option color="danger" expandable="true">
-          <ion-icon name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <cdk-virtual-scroll-viewport itemSize="56" minBufferPx="900" maxBufferPx="1350">
+    <ion-list>
+      <ion-item-sliding *ngFor="let reminder of reminders$ | async">
+        <ion-item [href]="reminder">
+          <ion-label>{{reminder}}%</ion-label>
+        </ion-item>
+        <ion-item-options side="end" (ionSwipe)="deleteReminder(reminder)">
+          <ion-item-option color="danger" expandable="true">
+            <ion-icon name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </cdk-virtual-scroll-viewport>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/create">
