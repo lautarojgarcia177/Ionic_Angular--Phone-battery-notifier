@@ -16,14 +16,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.remindersService.reminders$.subscribe(reminders => {
-      console.log(reminders);
+      this.reminders = reminders;
     });
     // watch change in battery status
     const subscription = this.batteryStatus.onChange().subscribe(status => {
       console.log(status.level, status.isPlugged);
+      if (this.reminders?.includes(status.level)) {
+        alert('Charge your phone notification!');
+      }
     });
 
-    // stop watch
-    subscription.unsubscribe();
   }
 }
