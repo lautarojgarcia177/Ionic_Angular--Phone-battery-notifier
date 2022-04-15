@@ -1,8 +1,8 @@
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
-import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {AlertController, IonicModule, IonicRouteStrategy} from '@ionic/angular';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -15,6 +15,7 @@ import {IonicStorageModule} from '@ionic/storage-angular';
 import {ReminderComponent} from './reminder/reminder.component';
 
 import { BatteryStatus} from "@awesome-cordova-plugins/battery-status/ngx";
+import { GlobalErrorHandlerService } from './global-error-handler.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { BatteryStatus} from "@awesome-cordova-plugins/battery-status/ngx";
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule,
     FormsModule, IonicStorageModule.forRoot(), ScrollingModule,
   ],
-  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, BatteryStatus],
+  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, BatteryStatus, {provide: ErrorHandler, useClass: GlobalErrorHandlerService}],
   bootstrap: [AppComponent],
 })
 export class AppModule {

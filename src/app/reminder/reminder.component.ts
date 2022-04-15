@@ -54,11 +54,15 @@ export class ReminderComponent implements OnInit {
     if (!this.isCreating) {
       this.remindersService.editReminder(Number(this.route.snapshot.params['range']), Number(this.value)).then(() => {
         this.router.navigate(['']);
-      }).catch(() => alert('There was an error'));
+      }).catch(() => {
+        throw new Error('Failed to edit the reminder');
+      });
     } else {
       this.remindersService.addReminder(Number(this.value)).then(() => {
         this.router.navigate(['']);
-      }).catch(() => alert('There was an error'));
+      }).catch(() => {
+        throw new Error('Failed to add the reminder');
+      });
     }
   }
 }
