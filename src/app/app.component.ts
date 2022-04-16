@@ -6,7 +6,7 @@ import {
 } from '@capacitor/local-notifications';
 import { BatteryStatus } from '@awesome-cordova-plugins/battery-status/ngx';
 import { Subscription } from 'rxjs';
-import {filter, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, tap, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +30,8 @@ export class AppComponent implements OnInit, OnDestroy {
         .onChange()
         .pipe(
           filter((status) => this.reminders.includes(status.level)),
+          // distinctUntilChanged((prev, curr) => prev.level !== curr.level),
+          throttleTime(5000),
           tap(status => console.log('battery status', status)),
           )
         .subscribe((status) => {

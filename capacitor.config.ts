@@ -8,7 +8,7 @@ const config: CapacitorConfig = {
   plugins: {
     LocalNotifications: {
       smallIcon: 'ic_stat_battery_charging_full',
-      iconColor: '3486eb'
+      iconColor: '#3486eb'
     }
   }
 };
