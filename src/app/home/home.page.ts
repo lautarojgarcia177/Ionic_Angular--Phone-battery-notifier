@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RemindersService } from '../reminders.service';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -10,6 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
   reminders$ = this.remindersService.reminders$.pipe(
+    filter(reminders => !!reminders && reminders.length > 0),
     map((reminders) => reminders.sort((a, b) => a - b))
   );
 

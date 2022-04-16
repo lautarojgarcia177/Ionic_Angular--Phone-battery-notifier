@@ -5,6 +5,12 @@ const config: CapacitorConfig = {
   appName: 'charge-battery-reminder',
   webDir: 'www',
   bundledWebRuntime: false,
+  plugins: {
+    LocalNotifications: {
+      smallIcon: 'ic_stat_battery_charging_full',
+      iconColor: '3486eb'
+    }
+  }
 };
 
 export default config;

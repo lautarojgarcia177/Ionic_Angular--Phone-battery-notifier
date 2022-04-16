@@ -2,5 +2,11 @@
 	"appId": "io.ionic.starter",
 	"appName": "charge-battery-reminder",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"plugins": {
+		"LocalNotifications": {
+			"smallIcon": "ic_stat_battery_charging_full",
+			"iconColor": "3486eb"
+		}
+	}
 }
