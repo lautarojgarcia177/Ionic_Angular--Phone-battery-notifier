@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .onChange()
         .pipe(
           filter((status) => this.reminders.includes(status.level)),
-          // distinctUntilChanged((prev, curr) => prev.level !== curr.level),
+          distinctUntilChanged((prev, curr) => prev.level !== curr.level),
           throttleTime(5000),
           tap(status => console.log('battery status', status)),
           )
